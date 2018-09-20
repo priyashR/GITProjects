@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DataIngestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataIngestApplication.class, args);
+		SpringApplication.run(DataIngestApplication.class, args) ; 
 	}
 }
