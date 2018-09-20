@@ -1,0 +1,16 @@
+java -jar /home/priyash/GITProjects/samples/gs-serving-web-content/complete/target/gs-serving-web-content-0.1.0.jar
+
+
+docker image ls
+
+docker tag greeting priyash/docker-repo:greetingV1
+
+docker tag greeting priyash/docker-repo:greetingV1
+docker push priyash/docker-repo:greetingV1
+
+docker run -p 4000:8080 priyash/docker-repo:greetingV1
+
+---------------------------------------------------------------------------------------
+Speak to K and Bhavesh
+
+about our position on AWS - position paper

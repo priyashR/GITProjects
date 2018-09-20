@@ -6,33 +6,33 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName = "toDoList")
 public class ListItem {
-	private Integer itemNumber;
+	private Integer ItemNumber;
 	private String date;
 	private Integer orderNumber;
 	private String item;
 	private String status;
 	
-	@DynamoDBHashKey
+	@DynamoDBHashKey(attributeName = "itemNumber")
 	public Integer getItemNumber() {
-		return itemNumber;
+		return ItemNumber;
 	}
 	
-	@DynamoDBAttribute
+	@DynamoDBAttribute(attributeName = "date")
 	public String getDate() {
 		return date;
 	}
 	
-	@DynamoDBAttribute
+	@DynamoDBAttribute(attributeName = "orderNumber")
 	public Integer getOrderNumber() {
 		return orderNumber;
 	}
 	
-	@DynamoDBAttribute
+	@DynamoDBAttribute(attributeName = "item")
 	public String getItem() {
 		return item;
 	}
 	
-	@DynamoDBAttribute
+	@DynamoDBAttribute(attributeName = "status")
 	public String getStatus() {
 		return status;
 	}
