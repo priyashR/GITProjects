@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="dataIngest/src/main/java"/>
+	<classpathentry kind="src" path="dataIngest/src/test/java"/>
+	<classpathentry kind="src" path="samples/gs-scheduling-tasks-master/complete/src/main/java"/>
+	<classpathentry kind="src" path="samples/gs-scheduling-tasks-master/complete/src/test/java"/>
+	<classpathentry kind="src" path="samples/gs-serving-web-content/complete/src/main/java"/>
+	<classpathentry kind="src" path="samples/gs-serving-web-content/complete/src/test/java"/>
+	<classpathentry kind="src" path="samples/gs-serving-web-content/initial/src/main/java/hello"/>
+	<classpathentry kind="src" path="toDoApp/src/main/java"/>
+	<classpathentry kind="src" path="toDoApp/src/test/java"/>
+	<classpathentry kind="lib" path="dataIngest/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="jars/greeting/greeting.jar"/>
+	<classpathentry kind="lib" path="samples/gs-scheduling-tasks-master/complete/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="samples/gs-scheduling-tasks-master/complete/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="samples/gs-scheduling-tasks-master/complete/target/schedulerExmple.jar"/>
+	<classpathentry kind="lib" path="samples/gs-scheduling-tasks-master/initial/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="samples/gs-scheduling-tasks-master/initial/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="samples/gs-serving-web-content/complete/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="samples/gs-serving-web-content/complete/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="samples/gs-serving-web-content/complete/target/gs-serving-web-content-0.1.0.jar"/>
+	<classpathentry kind="lib" path="samples/gs-serving-web-content/initial/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="samples/gs-serving-web-content/initial/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="toDoApp/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="samples/gs-scheduling-tasks-master/complete/target/classes"/>
+</classpath>
