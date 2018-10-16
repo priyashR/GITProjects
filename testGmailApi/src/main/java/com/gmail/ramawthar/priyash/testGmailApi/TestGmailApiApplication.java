@@ -8,5 +8,6 @@ public class TestGmailApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestGmailApiApplication.class, args);
+		System.out.println("hi");
 	}
 }
