@@ -32,7 +32,7 @@ public class GmailQuickstart {
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(GmailScopes.GMAIL_LABELS);
-    private static final String CREDENTIALS_FILE_PATH = "/priyash_ramawthar_ost_credentials.json";
+    private static final String CREDENTIALS_FILE_PATH = "/priyash_ramawthar_ost_credentials3.json";
 
     /**
      * Creates an authorized Credential object.

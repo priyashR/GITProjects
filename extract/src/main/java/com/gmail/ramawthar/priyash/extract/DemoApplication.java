@@ -1,13 +1,12 @@
-package com.gmail.ramawthar.priyash.testGmailApi;
+package com.gmail.ramawthar.priyash.extract;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestGmailApiApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestGmailApiApplication.class, args);
-		System.out.println("hi");
+		SpringApplication.run(DemoApplication.class, args);
 	}
 }

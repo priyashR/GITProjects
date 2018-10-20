@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestGmailApiApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.gmail.ramawthar.priyash.testGmailApi.TestGmailApiApplication",
+            "args": "",
+            "projectName": "testGmailApi"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GmailQuickstart",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.gmail.ramawthar.priyash.testGmailApi.GmailQuickstart",
+            "args": "",
+            "projectName": "testGmailApi"
+        }
+    ]
+}
