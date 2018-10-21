@@ -15,8 +15,14 @@ public class ScheduledTasks {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
+    private GmailConnect gCon = new GmailConnect();
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
         log.info("The time is now {}", dateFormat.format(new Date()));
+        try{
+        	gCon.fetchMailData();
+        }catch (Exception e){
+        	System.out.println(e.getMessage());
+        }
     }
 }
