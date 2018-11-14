@@ -1,3 +1,4 @@
+
 package com.gmail.ramawthar.priyash.budgetDataIngestion;
 
 import javax.mail.BodyPart;
@@ -15,13 +16,11 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 
+public class GmailInboundImapIdleAdapterTestApp {
+	//private static Log logger = LogFactory.getLog(GmailInboundImapIdleAdapterTestApp.class);
 
-public class ProcessEmails {
-	
-	public static void main(String arg[]) throws Exception {
-		
-		
-		
+
+	public static void main (String[] args) throws Exception {
 		@SuppressWarnings("resource")
 		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext(
 				"/META-INF/spring/integration/gmail-imap-idle-config.xml");
@@ -41,7 +40,6 @@ public class ProcessEmails {
 	                BodyPart part = mp.getBodyPart(i);
 	                if (part.isMimeType("text/plain")) {
 	                	System.out.println("Body Priyash: " + part.getContent().toString());
-	                	processEmailBody(part.getContent().toString());
 	                }
 	            }
 				}catch(Exception e){
@@ -49,26 +47,6 @@ public class ProcessEmails {
 					e.printStackTrace();
 				}
 			}
-		});		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// Process the emails
-//		
-//		
-//		ParseTransactions pt = new ParseTransactions("FNB :-) R15000.00 t/fer from cheq a/c..204327 to Notice a/c..253965 @ Online Banking. Avail R24668. 29Oct 20:33");
-//		pt.processLine();
+		});
 	}
-	
-	private static void processEmailBody(String emailBody) {
-		ParseTransactions pt = new ParseTransactions(emailBody);
-		pt.processLine();
-	}
-
 }
