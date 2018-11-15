@@ -40,7 +40,7 @@ public class ProcessEmails {
 					System.out.println("i count: "+i);
 	                BodyPart part = mp.getBodyPart(i);
 	                if (part.isMimeType("text/plain")) {
-	                	System.out.println("Body Priyash: " + part.getContent().toString().replace("\n", " "));
+	                	System.out.println("Body Priyash: " + part.getContent().toString().replace("\r\n", " "));
 	                	processEmailBody(part.getContent().toString());
 	                }
 	            }
@@ -50,20 +50,6 @@ public class ProcessEmails {
 				}
 			}
 		});		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// Process the emails
-//		
-//		
-//		ParseTransactions pt = new ParseTransactions("FNB :-) R15000.00 t/fer from cheq a/c..204327 to Notice a/c..253965 @ Online Banking. Avail R24668. 29Oct 20:33");
-//		pt.processLine();
 	}
 	
 	private static void processEmailBody(String emailBody) {

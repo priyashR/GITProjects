@@ -38,6 +38,7 @@ public class ParseTransactions {
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         
         String input = "{\"transaction\":\""+transactionLine+"\"}";
+        System.out.println("input: "+input);
         String uri = "http://127.0.0.1:8080/function/format-fnb-transaction";
         
         // set headers
