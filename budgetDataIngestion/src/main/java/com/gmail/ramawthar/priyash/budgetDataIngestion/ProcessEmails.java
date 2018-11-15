@@ -40,7 +40,7 @@ public class ProcessEmails {
 					System.out.println("i count: "+i);
 	                BodyPart part = mp.getBodyPart(i);
 	                if (part.isMimeType("text/plain")) {
-	                	System.out.println("Body Priyash: " + part.getContent().toString());
+	                	System.out.println("Body Priyash: " + part.getContent().toString().replace("\n", " "));
 	                	processEmailBody(part.getContent().toString());
 	                }
 	            }
