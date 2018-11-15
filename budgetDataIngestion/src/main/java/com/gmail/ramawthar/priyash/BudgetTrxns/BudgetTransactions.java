@@ -39,7 +39,7 @@ public class BudgetTransactions implements ProcessEmail{
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         
-        String input = "{\"transaction\":\""+emailBody.replace("\n", "")+"\"}";
+        String input = "{\"transaction\":\""+emailBody.replace("\n", "").replace("\r", "")+"\"}";
         System.out.println("input: "+input);
         String uri = "http://127.0.0.1:8080/function/format-fnb-transaction";
         
@@ -55,6 +55,9 @@ public class BudgetTransactions implements ProcessEmail{
         result = response.getBody();
         System.out.println("result:");
         System.out.println(result);
+		
+	}
+	private void pushToQueue(){
 		
 	}
 }

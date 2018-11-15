@@ -21,8 +21,9 @@ import com.gmail.ramawthar.priyash.interfaces.ProcessEmail;
 
 public class FetchEmails {
 	
-	public static void main(String arg[]) throws Exception {
-		
+	//public static void main(String arg[]) throws Exception {
+	
+	public void run() throws Exception {
 		
 		
 		@SuppressWarnings("resource")
