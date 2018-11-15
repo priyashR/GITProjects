@@ -1,4 +1,4 @@
-package com.gmail.ramawthar.priyash.budgetDataIngestion;
+package com.gmail.ramawthar.priyash.DataIngestion;
 
 import javax.mail.BodyPart;
 import javax.mail.Folder;
@@ -15,8 +15,11 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 
+import com.gmail.ramawthar.priyash.BudgetTrxns.BudgetTransactions;
+import com.gmail.ramawthar.priyash.interfaces.ProcessEmail;
 
-public class ProcessEmails {
+
+public class FetchEmails {
 	
 	public static void main(String arg[]) throws Exception {
 		
@@ -30,6 +33,7 @@ public class ProcessEmails {
 			public void handleMessage(Message<?> message) throws MessagingException {
 				//logger.info("Message: " + message);
 				try{
+				ProcessEmail emailProcessor;
 				MimeMessage mm = (MimeMessage) message.getPayload();
 				
 				Multipart mp = (Multipart) mm.getContent();
@@ -37,11 +41,21 @@ public class ProcessEmails {
 				System.out.println("mp.getCount(): "+mp.getCount());
 				mm.getFolder().open(Folder.READ_ONLY);
 				for (int i = 0; i < mp.getCount(); i++) {
+					
+					//Add logic to identify the correct email processing class
+					//if body is like this and subject is like that
+					//then use a different instance of the email processor
+					//
+					//now we just use BudgetTransactions
+					
+					
 					System.out.println("i count: "+i);
 	                BodyPart part = mp.getBodyPart(i);
 	                if (part.isMimeType("text/plain")) {
-	                	System.out.println("Body Priyash: " + part.getContent().toString().replace("\r\n", " "));
-	                	processEmailBody(part.getContent().toString());
+	                	System.out.println("Body Priyash: " + part.getContent().toString());
+	                	emailProcessor = new BudgetTransactions(part.getContent().toString());
+	                	emailProcessor.parseBody();
+	                	
 	                }
 	            }
 				}catch(Exception e){
@@ -50,11 +64,6 @@ public class ProcessEmails {
 				}
 			}
 		});		
-	}
-	
-	private static void processEmailBody(String emailBody) {
-		ParseTransactions pt = new ParseTransactions(emailBody);
-		pt.processLine();
 	}
 
 }

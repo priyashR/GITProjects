@@ -1,4 +1,4 @@
-package com.gmail.ramawthar.priyash.budgetDataIngestion;
+package com.gmail.ramawthar.priyash.BudgetTrxns;
 
 public class TrxnObj {
 	public TrxnObj(String transaction) {
