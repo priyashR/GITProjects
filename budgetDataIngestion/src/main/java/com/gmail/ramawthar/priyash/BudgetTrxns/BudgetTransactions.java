@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.gmail.ramawthar.priyash.interfaces.ProcessEmail;
 import com.gmail.ramawthar.priyash.rabbit.QueueManager;
-import com.gmail.ramawthar.priyash.rabbit.QueueManager1;
+import com.gmail.ramawthar.priyash.rabbit.QueueManager;
 
 public class BudgetTransactions implements ProcessEmail{
 	
@@ -62,8 +62,10 @@ public class BudgetTransactions implements ProcessEmail{
 		
 	}
 	private void pushToQueue(String result){
-		QueueManager1 qm = new QueueManager1();
-		qm.publishToQueue(result);
+		//works!
 		
+		QueueManager qm = new QueueManager();
+		qm.publishToQueue(result);
+	
 	}
 }

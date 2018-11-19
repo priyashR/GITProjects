@@ -57,7 +57,7 @@ public class DataIngestionApplication {
     }
     
     
-    /*testing autowiring
+    /*testing autowiring <- wont work because component classes cannot be created with the new keyword
     
 	@Bean
 	public ConnectionFactory connectionFactory() {

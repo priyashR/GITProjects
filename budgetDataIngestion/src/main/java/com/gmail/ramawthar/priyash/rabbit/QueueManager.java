@@ -1,25 +1,17 @@
 package com.gmail.ramawthar.priyash.rabbit;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-
-/////Doesnt seem to autowire
-
-@Component
-public class QueueManager {    
-	@Autowired
-    private RabbitTemplate rabbitTemplate;
-
-	public QueueManager() {
-		super();
-	}
+public class QueueManager {
 	
-	public void sendRabbit(String result){
-		rabbitTemplate.convertAndSend("budget-exchange", "fnb.trxn.#", "Hello from RabbitMQ!");
-		
+	public void publishToQueue(String msg){
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(QueueConfig.class);
+		AmqpTemplate amqpTemplate = context.getBean(AmqpTemplate.class);
+		amqpTemplate.convertAndSend(msg);
+		System.out.println("msg: "+msg);
 	}
-    
+
 }
