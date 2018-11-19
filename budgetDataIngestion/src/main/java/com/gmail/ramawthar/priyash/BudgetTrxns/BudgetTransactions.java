@@ -9,6 +9,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import com.gmail.ramawthar.priyash.interfaces.ProcessEmail;
+import com.gmail.ramawthar.priyash.rabbit.QueueManager;
+import com.gmail.ramawthar.priyash.rabbit.QueueManager1;
 
 public class BudgetTransactions implements ProcessEmail{
 	
@@ -55,9 +57,13 @@ public class BudgetTransactions implements ProcessEmail{
         result = response.getBody();
         System.out.println("result:");
         System.out.println(result);
+        
+        pushToQueue(result);
 		
 	}
-	private void pushToQueue(){
+	private void pushToQueue(String result){
+		QueueManager1 qm = new QueueManager1();
+		qm.publishToQueue(result);
 		
 	}
 }
