@@ -17,19 +17,19 @@ public class BudgetTransactions implements ProcessEmail{
 	String emailBody;
 	String result;
 
-	public BudgetTransactions(String transactionLine) {
+	public BudgetTransactions(String emailBody) {
 		super();
-		this.emailBody = transactionLine;
-		this.result = "Awaiting parsing";
+		this.emailBody = emailBody;
+		this.result = "";
 	}
 
-	public String getTransactionLine() {
+	public String getEmailBody() {
 		return emailBody;
 	}
 
-	public void setTransactionLine(String transactionLine) {
-		this.emailBody = transactionLine;
-		this.result = "Awaiting parsing";
+	public void setEmailBody(String emailBody) {
+		this.emailBody = emailBody;
+		this.result = "";
 	}
 	
 	public String getResult() {
@@ -38,10 +38,22 @@ public class BudgetTransactions implements ProcessEmail{
 
 	public void parseBody(){
 
+		String trxnLine = "";
+		
+		System.out.println(emailBody);
+		
+		//need to pass a line at a time instead of the whole body
+		//parseLine(trxnLine);
+	}
+	
+	private void parseLine(String unprocessedLine){
+		
+		String lineResult = "";
+		
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         
-        String input = "{\"transaction\":\""+emailBody.replace("\n", "").replace("\r", "")+"\"}";
+        String input = "{\"transaction\":\""+unprocessedLine.replace("\n", "").replace("\r", "")+"\"}";
         System.out.println("input: "+input);
         String uri = "http://127.0.0.1:8080/function/format-fnb-transaction";
         
@@ -54,18 +66,18 @@ public class BudgetTransactions implements ProcessEmail{
         ResponseEntity<String> response = restTemplate
                 .exchange(uri, HttpMethod.POST, entity, String.class);
         
-        result = response.getBody();
-        System.out.println("result:");
-        System.out.println(result);
+        lineResult = response.getBody();
+        result = result + " " + lineResult;
+        System.out.println("lineResult: "+lineResult);
+        System.out.println("result: "+result);
         
-        pushToQueue(result);
-		
+        pushToQueue(lineResult);
 	}
-	private void pushToQueue(String result){
+	private void pushToQueue(String processedLine){
 		//works!
 		
 		QueueManager qm = new QueueManager();
-		qm.publishToQueue(result);
+		qm.publishToQueue(processedLine);
 	
 	}
 }

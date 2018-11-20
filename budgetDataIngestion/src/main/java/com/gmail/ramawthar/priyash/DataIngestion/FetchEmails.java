@@ -52,12 +52,36 @@ public class FetchEmails {
 					
 					System.out.println("i count: "+i);
 	                BodyPart part = mp.getBodyPart(i);
+	              
+	                //System.out.println("Body type: "+part.getContentType());
+	                //System.out.println("Body type: "+part.getContent().toString());
+	                
 	                if (part.isMimeType("text/plain")) {
 	                	System.out.println("Body Priyash: " + part.getContent().toString());
 	                	emailProcessor = new BudgetTransactions(part.getContent().toString());
 	                	emailProcessor.parseBody();
 	                	
 	                }
+	                if (part.isMimeType("multipart/ALTERNATIVE")) {
+	                	Multipart mpLevelTwo = (Multipart) part.getContent();
+	    				mm.getFolder().open(Folder.READ_ONLY);
+	    				System.out.println("mpLevelTwo.getCount(): "+mpLevelTwo.getCount());
+	    				mm.getFolder().open(Folder.READ_ONLY);
+	    				for (int j = 0; j < mpLevelTwo.getCount(); j++) {
+	    					System.out.println("j count: "+j);
+	    	                BodyPart partLevelTwo = mpLevelTwo.getBodyPart(j);
+	    	                //System.out.println("Body type: "+partLevelTwo.getContentType());
+	    	                //System.out.println("Body type: "+partLevelTwo.getContent().toString());
+	    	                if (partLevelTwo.isMimeType("TEXT/PLAIN")) {
+
+	    	                	emailProcessor = new BudgetTransactions(partLevelTwo.getContent().toString());
+	    	                	emailProcessor.parseBody();
+	    	                }
+
+	    				}
+	                }
+	                
+	                
 	            }
 				}catch(Exception e){
 					
