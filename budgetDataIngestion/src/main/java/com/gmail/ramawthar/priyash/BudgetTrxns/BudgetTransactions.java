@@ -41,6 +41,8 @@ public class BudgetTransactions implements ProcessEmail{
 		String trxnLine = "";
 		
 		System.out.println(emailBody);
+		String[] lines = emailBody.split(System.getProperty("line.separator"));
+		System.out.println(lines.length);
 		
 		//need to pass a line at a time instead of the whole body
 		//parseLine(trxnLine);
