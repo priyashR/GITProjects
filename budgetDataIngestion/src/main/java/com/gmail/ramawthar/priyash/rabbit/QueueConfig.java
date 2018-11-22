@@ -1,7 +1,10 @@
 package com.gmail.ramawthar.priyash.rabbit;
 
 import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -16,6 +19,21 @@ public class QueueConfig {
     static final String topicExchangeName = "budget-exchange";
     static final String queueName = "fnb-transactions";
     static final String routingKey = "fnb.trxn.#";
+
+    @Bean
+    Queue queue() {
+        return new Queue(queueName, false);
+    }
+
+    @Bean
+    TopicExchange exchange() {
+        return new TopicExchange(topicExchangeName);
+    }
+
+    @Bean
+    Binding binding(Queue queue, TopicExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
+    }
     
 	@Bean
 	public ConnectionFactory connectionFactory() {
@@ -43,10 +61,4 @@ public class QueueConfig {
 		//System.out.println("Register the rabbitTemplate");
 		return template;
 	}
-
-	//@Bean
-	// Every queue is bound to the default direct exchange
-	//public Queue queue() {
-    //    return new Queue(queueName, false);
-    //}
 }

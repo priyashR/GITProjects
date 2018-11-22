@@ -21,7 +21,7 @@ import com.gmail.ramawthar.priyash.rabbit.Receiver;
 @SpringBootApplication
 @ComponentScan({"com.gmail.ramawthar.priyash.rabbit"})
 public class DataIngestionApplication {
-	
+	/* moved to the configuration class for rabbit
     static final String topicExchangeName = "budget-exchange";
     static final String queueName = "fnb-transactions";
     static final String routingKey = "fnb.trxn.#";
@@ -38,9 +38,9 @@ public class DataIngestionApplication {
 
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("fnb.trxn.#");
-    }
-
+        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
+    }*/
+/* Moved the queue listener out of this class
     @Bean
     SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
             MessageListenerAdapter listenerAdapter) {
@@ -55,9 +55,9 @@ public class DataIngestionApplication {
     MessageListenerAdapter listenerAdapter(Receiver receiver) {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
+*/
     
-    
-    /*testing autowiring <- wont work because component classes cannot be created with the new keyword
+    /*testing autowiring <- test did not work -> wont work because component classes cannot be created with the new keyword
     
 	@Bean
 	public ConnectionFactory connectionFactory() {
