@@ -40,7 +40,7 @@ public class QueueConfig {
 		template.setRoutingKey(routingKey);
 		//Where we will synchronously receive messages from
 		//template.setQueue(this.helloWorldQueueName);
-		System.out.println("Register the rabbitTemplate");
+		//System.out.println("Register the rabbitTemplate");
 		return template;
 	}
 

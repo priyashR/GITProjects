@@ -40,12 +40,25 @@ public class BudgetTransactions implements ProcessEmail{
 
 		String trxnLine = "";
 		
-		System.out.println(emailBody);
+		//System.out.println(emailBody);
 		String[] lines = emailBody.split(System.getProperty("line.separator"));
-		System.out.println(lines.length);
+		//System.out.println(lines.length);
 		
-		//need to pass a line at a time instead of the whole body
-		//parseLine(trxnLine);
+		for (int i = 0; i < lines.length; i++){
+			trxnLine = "";
+			if (lines[i].contains("FNB :-) R")){
+				if (i+1 >= lines.length){
+					trxnLine = lines[i];
+				}else{
+					trxnLine = lines[i]+" "+lines[i+1];
+					i++;
+				}
+				//need to pass a line at a time instead of the whole body
+				System.out.println(lines.length+" "+"trxnLine: "+trxnLine);
+				parseLine(trxnLine);
+			}
+		}
+		
 	}
 	
 	private void parseLine(String unprocessedLine){
