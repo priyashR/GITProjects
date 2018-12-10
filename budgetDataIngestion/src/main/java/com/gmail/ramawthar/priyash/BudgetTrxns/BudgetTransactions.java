@@ -46,7 +46,7 @@ public class BudgetTransactions implements ProcessEmail{
 		
 		for (int i = 0; i < lines.length; i++){
 			trxnLine = "";
-			if (lines[i].contains("FNB :-) R")){
+			if ((lines[i].contains("FNB :-) R"))&&(!(lines[i].toUpperCase().startsWith("SUBJECT")))){
 				if (i+1 >= lines.length){
 					trxnLine = lines[i];
 				}else{

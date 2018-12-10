@@ -19,6 +19,8 @@ public class QueueConfig {
     static final String topicExchangeName = "budget-exchange";
     static final String queueName = "fnb-transactions";
     static final String routingKey = "fnb.trxn.#";
+    static final String IP = "127.0.0.53";
+    static final int port = 5672;
 
     @Bean
     Queue queue() {
@@ -37,8 +39,8 @@ public class QueueConfig {
     
 	@Bean
 	public ConnectionFactory connectionFactory() {
-		CachingConnectionFactory connectionFactory = new CachingConnectionFactory("172.18.0.2");
-		connectionFactory.setPort(5672);
+		CachingConnectionFactory connectionFactory = new CachingConnectionFactory(IP);
+		connectionFactory.setPort(port);
 		connectionFactory.setUsername("budget");
 		connectionFactory.setPassword("fnbTrxn");
 		return connectionFactory;
