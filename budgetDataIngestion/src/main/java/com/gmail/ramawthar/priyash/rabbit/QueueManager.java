@@ -10,6 +10,8 @@ public class QueueManager {
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(QueueConfig.class);
 		AmqpTemplate amqpTemplate = context.getBean(AmqpTemplate.class);
+		//Need to figure out how to send the messages so they persist
+		//see: https://www.rabbitmq.com/tutorials/tutorial-two-java.html
 		amqpTemplate.convertAndSend(msg);
 		System.out.println("msg: "+msg);
 	}
