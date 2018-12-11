@@ -63,6 +63,8 @@ public class BudgetTransactions implements ProcessEmail{
 	
 	private void parseLine(String unprocessedLine){
 		
+		final String serverIP = "172.16.0.128";//do an ipconfig to get the host ip value
+		//final String serverIP = "127.0.0.1";
 		String lineResult = "";
 		
         RestTemplate restTemplate = new RestTemplate();
@@ -70,7 +72,7 @@ public class BudgetTransactions implements ProcessEmail{
         
         String input = "{\"transaction\":\""+unprocessedLine.replace("\n", "").replace("\r", "").replace(";", "-")+"\"}";
         System.out.println("input: "+input);
-        String uri = "http://127.0.0.1:8080/function/format-fnb-transaction";
+        String uri = "http://"+serverIP+":8080/function/format-fnb-transaction";
         
         // set headers
         HttpHeaders headers = new HttpHeaders();
