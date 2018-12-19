@@ -29,7 +29,8 @@ public class ElasticsearchdemoApplication implements CommandLineRunner{
     public void run(String... args) throws Exception {
 
 		SetupData sd = new SetupData();
-		sd.test(bookService, es);
+		//sd.test(bookService, es);
+		sd.test2(bookService, es);
     }
 
 	

@@ -4,6 +4,8 @@ import org.elasticsearch.common.settings.Settings;
 
 import com.gmail.ramawthar.priyash.model.Book;
 import com.gmail.ramawthar.priyash.service.BookService;
+
+import java.util.List;
 import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,6 +32,20 @@ public class SetupData {
 
         books.forEach(x -> System.out.println(x));
 	}
+	
+	public void test2(BookService bookService, ElasticsearchOperations es){
+
+        this.es = es;
+        printElasticSearchInfo();
+        
+        List<Book> books = bookService.findByTitle("Elasticsearch Basics");
+        
+        //books.forEach(x -> System.out.println(x));
+        System.out.println(books.get(0).toString());
+        books.get(0).setAuthor("Priyash");
+        bookService.save(books.get(0));
+	}	
+	
     //useful for debug, print elastic search details
     private void printElasticSearchInfo() {
 
