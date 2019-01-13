@@ -88,5 +88,14 @@ public class TransactionObj {
 	public void setTranTime(String tranTime) {
 		this.tranTime = tranTime;
 	}
+
+	@Override
+	public String toString() {
+		return "TransactionObj [tranType=" + tranType + ", tranFlow=" + tranFlow + ", tranAmount=" + tranAmount
+				+ ", tranRef=" + tranRef + ", tranRefTree=" + tranRefTree + ", tranAcct=" + tranAcct + ", tranCard="
+				+ tranCard + ", tranDate=" + tranDate + ", tranTime=" + tranTime + "]";
+	}
+	
+	
 	
 }
