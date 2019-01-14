@@ -58,7 +58,7 @@ public class BudgetTransactions implements ProcessEmail{
 				
 				// HACK !!! - this should be done in OpenFaas
 				if (trxnLine.contains("withdrawn from FNB card")){
-					trxnLine = trxnLine.replace("withdrawn from FNB card", "withdrawn from cheq");
+					trxnLine = trxnLine.replace("withdrawn from FNB card", "withdrawn from cheq").replace("\n", "").replace("\r", "");
 					String before = trxnLine.substring(0, trxnLine.indexOf("using card.."));
 					String after = trxnLine.substring(trxnLine.indexOf("@ ") );
 					trxnLine = before + after;
