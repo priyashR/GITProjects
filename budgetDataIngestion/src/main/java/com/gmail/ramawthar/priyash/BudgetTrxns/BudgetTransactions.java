@@ -55,7 +55,15 @@ public class BudgetTransactions implements ProcessEmail{
 				}
 				//need to pass a line at a time instead of the whole body
 				System.out.println(lines.length+" "+"trxnLine: "+trxnLine);
-				//trxnLine = trxnLine.replace("withdrawn from FNB card", "withdrawn from cheq");// HACK !!! - this should be done in OpenFaas
+				
+				// HACK !!! - this should be done in OpenFaas
+				if (trxnLine.contains("withdrawn from FNB card")){
+					trxnLine = trxnLine.replace("withdrawn from FNB card", "withdrawn from cheq");
+					String before = trxnLine.substring(0, trxnLine.indexOf("using card.."));
+					String after = trxnLine.substring(trxnLine.indexOf("@ ") );
+					trxnLine = before + after;
+				}
+				// HACK !!! - this should be done in OpenFaas
 				parseLine(trxnLine);
 			}
 		}
