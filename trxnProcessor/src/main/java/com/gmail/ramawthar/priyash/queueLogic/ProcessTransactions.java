@@ -6,18 +6,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.StringTokenizer;
 
+import com.gmail.ramawthar.priyash.model.Transaction;
+import com.gmail.ramawthar.priyash.service.TransactionService;
+
 public class ProcessTransactions {
 	
 	String transactionLine;
 	TransactionObj transactionObj = new TransactionObj();
+	TransactionService transactionService;
 
-	public ProcessTransactions(String transaction) {
+	public ProcessTransactions(String transaction, TransactionService transactionService) {
+		this.transactionService = transactionService;
 		this.transactionLine = transaction;
 	}
 	
-	public void processTransaction(){
-		loadTransactionObj();
-	}
 	public void action(){
 		loadTransactionObj();
 		pushTransactionToDB();
@@ -598,19 +600,32 @@ public class ProcessTransactions {
 	
 	private void pushTransactionToDB(){
 		
+		Transaction transaction = new Transaction(transactionObj.tranDate+transactionObj.tranTime+transactionObj.tranRef+Calendar.getInstance().getTimeInMillis(),
+												  transactionObj.tranType, 
+											  	  transactionObj.tranFlow, 
+												  transactionObj.tranAmount, 
+												  transactionObj.tranRef, 
+												  transactionObj.tranRefTree,
+												  transactionObj.tranAcct, 
+												  transactionObj.tranCard, 
+												  transactionObj.tranDate, 
+												  transactionObj.tranTime);
+		
+		
+		transactionService.save(transaction);
 	}
 	
-	public static void main(String arg[]){
+	//public static void main(String arg[]){
 		/*String test = "R250.00 withdrawn from cheq a/c..947000 using card..7046 @ Caltex N ATM. Avail R12134. 11Dec 17:52";
 		String before = test.substring(0, test.indexOf("using card.."));
 		String after = test.substring(test.indexOf("@ ") );
 		
 		System.out.println(before + after);*/
 		
-		ProcessTransactions pt = new ProcessTransactions(
-				"{\"transaction\": \"creditPurchase;out;808.32;Engen Lonehill Bouleva;947000;7046;8Jan;11:44\"}");
+		//ProcessTransactions pt = new ProcessTransactions(
+		//		"{\"transaction\": \"creditPurchase;out;808.32;Engen Lonehill Bouleva;947000;7046;8Jan;11:44\"}");
 		
-		pt.action();
+		//pt.action();
 		
-	}
+	//}
 }
