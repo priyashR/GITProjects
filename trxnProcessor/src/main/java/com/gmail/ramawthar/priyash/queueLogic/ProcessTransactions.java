@@ -29,7 +29,8 @@ public class ProcessTransactions {
 	private void loadTransactionObj(){
 		String formattedLine = transactionLine.replace("{","")
 											  .replace("}","")
-											  .replace("\"transaction\": \"", "")
+											  .replace("\"transaction\":\"", "")
+											  .replace("transaction:", "")
 											  .replace("\"", "");
 		
 		System.out.println("formatted line - " +formattedLine);
@@ -126,6 +127,7 @@ public class ProcessTransactions {
 			}
 			case 6://tranCard
 			{
+				transactionObj.tranFlow = st.nextElement().toString();
 				//no card number available, so ignore available for now and use acct number
 				transactionObj.tranCard = transactionObj.tranAcct;
 				System.out.println(transactionObj.tranCard);
@@ -330,6 +332,7 @@ public class ProcessTransactions {
 			}
 			case 6://tranCard
 			{
+				st.nextElement().toString();
 				//no card number available, so ignore available and use acct number
 				transactionObj.tranCard = transactionObj.tranAcct;
 				System.out.println(transactionObj.tranCard);
@@ -337,6 +340,7 @@ public class ProcessTransactions {
 				break;
 			}case 7://ignore available for now
 			{
+				st.nextElement().toString();
 				break;
 			}
 			case 8://tranDate
@@ -434,6 +438,7 @@ public class ProcessTransactions {
 			}
 			case 6://tranCard and tranDate
 			{
+				transactionObj.tranFlow = st.nextElement().toString();
 				//no card number available, so ignore available and use acct number
 				transactionObj.tranCard = transactionObj.tranAcct;
 				System.out.println(transactionObj.tranCard);
@@ -533,6 +538,7 @@ public class ProcessTransactions {
 			}
 			case 6://tranCard
 			{
+				transactionObj.tranFlow = st.nextElement().toString();
 				//no card number available, so ignore available and use acct number
 				transactionObj.tranCard = transactionObj.tranAcct;
 				System.out.println(transactionObj.tranCard);
