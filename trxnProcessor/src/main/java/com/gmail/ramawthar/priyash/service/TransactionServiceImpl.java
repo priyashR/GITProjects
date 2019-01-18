@@ -21,20 +21,19 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Override
 	public Transaction save(Transaction transaction) {
-		// TODO Auto-generated method stub
-		return null;
+		return transactionRepository.save(transaction);
 	}
 
 	@Override
 	public void delete(Transaction transaction) {
-		// TODO Auto-generated method stub
+		transactionRepository.delete(transaction);
 
 	}
 
 	@Override
 	public List<Transaction> findByTranDate(String tranDate) {
 		// TODO Auto-generated method stub
-		return null;
+		return transactionRepository.findByTranDate(tranDate);
 	}
 
 }
