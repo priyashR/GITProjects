@@ -1,5 +1,7 @@
 package com.gmail.ramawthar.priyash.model;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -10,7 +12,7 @@ public class Transaction {
 	private String id;
 	private String tranType;
 	private String tranFlow;
-	private String tranAmount;
+	private BigDecimal tranAmount;
 	private String tranRef;
 	private String tranRefTree;    
 	private String tranAcct;
@@ -18,7 +20,7 @@ public class Transaction {
 	private String tranDate;
 	private String tranTime;
 	
-	public Transaction(String id, String tranType, String tranFlow, String tranAmount, String tranRef, String tranRefTree,
+	public Transaction(String id, String tranType, String tranFlow, BigDecimal tranAmount, String tranRef, String tranRefTree,
 			String tranAcct, String tranCard, String tranDate, String tranTime) {
 		super();
 		this.tranType = tranType;
@@ -59,11 +61,11 @@ public class Transaction {
 		this.tranFlow = tranFlow;
 	}
 
-	public String getTranAmount() {
+	public BigDecimal getTranAmount() {
 		return tranAmount;
 	}
 
-	public void setTranAmount(String tranAmount) {
+	public void setTranAmount(BigDecimal tranAmount) {
 		this.tranAmount = tranAmount;
 	}
 

@@ -1,5 +1,6 @@
 package com.gmail.ramawthar.priyash.queueLogic;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -609,7 +610,7 @@ public class ProcessTransactions {
 		Transaction transaction = new Transaction(transactionObj.tranDate+transactionObj.tranTime+transactionObj.tranRef+Calendar.getInstance().getTimeInMillis(),
 												  transactionObj.tranType, 
 											  	  transactionObj.tranFlow, 
-												  transactionObj.tranAmount, 
+												  new BigDecimal(transactionObj.tranAmount), 
 												  transactionObj.tranRef, 
 												  transactionObj.tranRefTree,
 												  transactionObj.tranAcct, 
