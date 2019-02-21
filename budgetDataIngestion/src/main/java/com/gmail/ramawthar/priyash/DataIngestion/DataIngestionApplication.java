@@ -20,7 +20,7 @@ import com.gmail.ramawthar.priyash.rabbit.Receiver;
 
 @SpringBootApplication
 @ComponentScan({"com.gmail.ramawthar.priyash.rabbit"})
-public class DataIngestionApplication {
+public class DataIngestionApplication { 
 	/* moved to the configuration class for rabbit
     static final String topicExchangeName = "budget-exchange";
     static final String queueName = "fnb-transactions";
