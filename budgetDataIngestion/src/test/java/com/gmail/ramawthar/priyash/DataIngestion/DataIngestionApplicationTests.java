@@ -1,4 +1,4 @@
-package com.gmail.ramawthar.priyash.budgetDataIngestion;
+package com.gmail.ramawthar.priyash.DataIngestion;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
